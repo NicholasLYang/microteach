@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import AceEditor from "react-ace";
+import { API_URL } from "../constants";
+import FlatButton from "material-ui/FlatButton";
+import axios from "axios";
+import esprima from "esprima"
 
-class CodePage extends Component {
+class BlockPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,7 +18,15 @@ class CodePage extends Component {
   };
 
   handleSubmit = () => {
-    console.log(eval(this.state.editorState));
+    const data = {
+      block: {
+        user_id: 1,
+        code: this.state.editorState
+      }
+    };
+    axios
+      .post(API_URL + "/blocks", data)
+      .then(response => console.log(response));
   };
 
   render() {
@@ -22,16 +34,15 @@ class CodePage extends Component {
       <div>
         <AceEditor
           mode="javascript"
-          theme="github"
           value={this.state.editorState}
           onChange={this.handleChange}
           name="CodeEditor"
           editorProps={{ $blockScrolling: true }}
         />
-        <button onClick={this.handleSubmit}> Submit </button>
+        <FlatButton onClick={this.handleSubmit} label="Submit" />
       </div>
     );
   }
 }
 
-export default CodePage;
+export default BlockPage;

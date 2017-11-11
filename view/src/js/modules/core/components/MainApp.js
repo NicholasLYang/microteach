@@ -1,45 +1,20 @@
 import React, { PureComponent } from "react";
 import injectSheet from "react-jss";
+import { withRouter } from "react-router-dom"
+import Header from "./Header"
 import connect from "react-redux/lib/connect/connect";
-import CodePage from "./CodePage"
 
 import { refreshWindowDimensions } from "./../actions";
 
 const styles = {
   appWrapper: {
+    fontFamily: "Proza Libre, sans-serif",
     minHeight: "100%",
     margin: "0px auto",
-    display: "flex",
-    flexDirection: "row"
-  },
-  mainWrapper: {
-    minHeight: "100%",
-    margin: "0px auto",
-    display: "flex",
-    flexDirection: "column",
-    flex: "1 0 auto"
-  },
-  contentWrapper: {
-    maxWidth: "720px",
-    minWidth: "360px",
-    margin: "0 auto"
-  },
-  mainContainer: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
-    flex: "1 0 auto",
     flexDirection: "column"
   },
-  mainContent: {
-    flexDirection: "column",
-    display: "flex",
-    flex: "1 0 auto"
-  },
-  appFooter: {
-    height: "40px",
-    textAlign: "center"
-  }
 };
 
 class MainApp extends PureComponent {
@@ -58,7 +33,8 @@ class MainApp extends PureComponent {
 
     return (
       <div className={classes.appWrapper}>
-        <CodePage />
+        <Header />
+        {this.props.children}
       </div>
     );
   }
@@ -77,4 +53,4 @@ const VisibleMainApp = connect(
   })
 )(injectSheet(styles)(MainApp));
 
-export default VisibleMainApp;
+export default withRouter(VisibleMainApp);
