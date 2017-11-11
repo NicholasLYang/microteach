@@ -1,5 +1,27 @@
-dist/dev/*.js
-dist/prod/*.js
-dist/prod/**
-node_modules
-builds/**
+/view/dist/dev/*.js
+/view/dist/prod/*.js
+/view/dist/prod/**
+/view/node_modules
+/view/builds/**
+
+# Ignore bundler config.
+/api/.bundle
+
+# Ignore the default SQLite database.
+/api/db/*.sqlite3
+/api/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+/api/log/*
+/api/tmp/*
+!/api/log/.keep
+!/api/tmp/.keep
+
+/api/.byebug_history
+
+
+
+
+
+
+
