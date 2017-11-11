@@ -3,7 +3,7 @@ import AceEditor from "react-ace";
 import { API_URL } from "../constants";
 import FlatButton from "material-ui/FlatButton";
 import axios from "axios";
-import esprima from "esprima"
+import { createLib } from "../utils";
 
 class BlockPage extends Component {
   constructor(props) {
@@ -18,15 +18,17 @@ class BlockPage extends Component {
   };
 
   handleSubmit = () => {
+    const code = this.state.editorState;
     const data = {
       block: {
-        user_id: 1,
-        code: this.state.editorState
+        code
       }
     };
     axios
       .post(API_URL + "/blocks", data)
       .then(response => console.log(response));
+    const lib = createLib(window);
+    lib.nicholaslyang.linter({ code }).then(result => console.log(result));
   };
 
   render() {

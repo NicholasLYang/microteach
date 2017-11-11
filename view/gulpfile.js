@@ -95,7 +95,8 @@ Object.keys(Flags).forEach((flag)=>
 const BABELIFY_CONFIG =
     {
         extensions : [ '.js', '.jsx' ],
-        presets    : [ 'es2015', 'react', 'stage-2', 'stage-3' ],
+        presets    : [ 'es2015', 'react', 'stage-0', 'stage-2', 'stage-3' ],
+      global: true,
         plugins :
         [
             'transform-remove-strict-mode',

@@ -8,6 +8,9 @@ html, body
     background-color : #ffffff;
     font-family      : 'roboto_regular';
 }
+.error {
+    color: red;
+}
 
 #app
 {
@@ -70,4 +73,17 @@ input:-webkit-autofill
 {
     -webkit-box-shadow : 0 0 0 1000px white inset !important;
     outline            : none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:visited {
+    color: black
 }

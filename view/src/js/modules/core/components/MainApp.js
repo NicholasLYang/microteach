@@ -5,6 +5,7 @@ import Header from "./Header"
 import connect from "react-redux/lib/connect/connect";
 
 import { refreshWindowDimensions } from "./../actions";
+import { createUserSession } from '../actions'
 
 const styles = {
   appWrapper: {
@@ -13,7 +14,7 @@ const styles = {
     margin: "0px auto",
     display: "flex",
     alignItems: "center",
-    flexDirection: "column"
+    flexDirection: "column",
   },
 };
 
@@ -23,6 +24,11 @@ class MainApp extends PureComponent {
     this.props.onResizeWindow();
   };
   componentDidMount() {
+    const token = localStorage.getItem("token");
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (currentUser !== null && token !== null) {
+      this.props.createUserSession(currentUser, token)
+    }
     window.addEventListener("resize", this.onResizeWindow);
   }
   componentWillUnmount() {
@@ -49,7 +55,8 @@ const VisibleMainApp = connect(
   dispatch => ({
     onResizeWindow: () => {
       dispatch(refreshWindowDimensions());
-    }
+    },
+    createUserSession: (user, token) => dispatch(createUserSession(user, token)),
   })
 )(injectSheet(styles)(MainApp));
 

@@ -8,6 +8,9 @@ const styles = {
   inputs: {
     display: "flex",
     flexDirection: "column"
+  },
+  submitButton: {
+    maxWidth: "100px"
   }
 };
 const validate = values => {
@@ -21,6 +24,12 @@ const validate = values => {
     errors.password = "Required";
   } else if (values.password.length < 8) {
     errors.password = "Password must be at least 8 characters";
+  }
+  if (!values.password_confirmation) {
+    errors.password_confirmation = "Required";
+  } else if (values.password !== values.password_confirmation) {
+    errors.password_confirmation =
+      "Password and password confirmation must be the same";
   }
   return errors;
 };
@@ -45,7 +54,7 @@ const renderField = ({
       />
       {touched &&
         ((error &&
-          <span>
+          <span className="error">
             {error}
           </span>) ||
           (warning &&
@@ -70,7 +79,15 @@ const SignUpForm = ({ classes, handleSubmit }) =>
         floatingLabelText="Password"
         type="password"
       />
+      <Field
+        name="password_confirmation"
+        component={renderField}
+        floatingLabelText="Password Confirmation"
+        type="password"
+      />
+      <div className={classes.submitButton}>
       <FlatButton type="Submit" label="Submit" />
+      </div>
     </div>
   </form>;
 

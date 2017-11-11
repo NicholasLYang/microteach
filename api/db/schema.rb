@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171111050212) do
+ActiveRecord::Schema.define(version: 20171111194137) do
 
   create_table "blocks", force: :cascade do |t|
     t.text "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "project_id"
+    t.integer "exercise_id"
   end
 
   create_table "exercises", force: :cascade do |t|
@@ -24,12 +26,16 @@ ActiveRecord::Schema.define(version: 20171111050212) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "prompt"
+    t.integer "next_exercise"
   end
 
   create_table "projects", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "tutorial_id"
+    t.integer "current_exercise"
+    t.string "name"
   end
 
   create_table "tutorials", force: :cascade do |t|

@@ -19,5 +19,6 @@ prompt = "<h1><a id=\"Hash_Algorithm_0\"></a>Hash Algorithm</h1>
 "
 
 User.create({ email: "nick@nicholasyang.com", id: 1 })
-tutorial = Tutorial.create({ name: "Make your own Blog", author: 1 })
-Exercise.create({ prompt: prompt, name: "Hash Exercise", tutorial_id: tutorial.id })
+tutorial = Tutorial.create({ name: "Make your own Blog!", author: 1 })
+tutorial = Tutorial.create({ name: "Make a Todo List!", author: 1 })
+Exercise.create({ prompt: prompt, name: "Hash Exercise!", tutorial_id: tutorial.id })
