@@ -1,0 +1,29 @@
+{
+  "name": "createFunction",
+  "version": "0.0.0",
+  "description": "",
+  "author": "nicholaslyang <nick@nicholasyang.com>",
+  "main": "functions/__main__.js",
+  "dependencies": {
+    "async": "^2.6.0",
+    "axios": "^0.17.1",
+    "es6-promise": "^4.1.1",
+    "fs": "0.0.1-security",
+    "isomorphic-fetch": "^2.2.1",
+    "lib": "^3.0.1",
+    "stdlib.js": "^1.0.0",
+    "tar": "^4.0.2",
+    "zlib": "^1.0.5"
+  },
+  "private": true,
+  "stdlib": {
+    "build": "faaslang",
+    "name": "nicholaslyang/createFunction",
+    "timeout": 10000,
+    "publish": true,
+    "personalize": {
+      "keys": [],
+      "user": []
+    }
+  }
+}
