@@ -1,8 +1,8 @@
 import React from "react";
 import injectSheet from "react-jss";
-import { TextField } from "redux-form-material-ui";
 import FlatButton from "material-ui/FlatButton";
 import { reduxForm, Field } from "redux-form";
+import { renderField } from './renderField'
 
 const styles = {
   inputs: {
@@ -22,36 +22,6 @@ const validate = values => {
   }
   return errors;
 };
-
-const renderField = ({
-  input,
-  label,
-  type,
-  meta: { touched, error, warning },
-  floatingLabelText
-}) =>
-  <div>
-    <label>
-      {label}
-    </label>
-    <div>
-      <TextField
-        {...input}
-        floatingLabelText={floatingLabelText}
-        placeholder={label}
-        type={type}
-      />
-      {touched &&
-        ((error &&
-          <span className="error">
-            {error}
-          </span>) ||
-          (warning &&
-            <span>
-              {warning}
-            </span>))}
-    </div>
-  </div>;
 
 const SignInForm = ({ classes, handleSubmit, submitting }) =>
   <form onSubmit={handleSubmit}>

@@ -39,8 +39,8 @@ const RoutingApp = () => {
                 <Route path="/signup" component={SignUpPage} />
                 <Route path="/signin" component={SignInPage} />
                 <Route path="/signout" component={SignOutPage} />
-                <Route path="/projects" component={ProjectsPage} />
                 <Route path="/projects/new" component={NewProjectPage} />
+                <Route path="/projects" component={ProjectsPage} />
               </Switch>
             </MainApp>
           </ConnectedRouter>

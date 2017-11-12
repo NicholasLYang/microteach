@@ -7,7 +7,7 @@ import { push } from "connected-react-router";
 import { SubmissionError } from 'redux-form'
 
 
-const SignUpPage = () => {
+const SignUpPage = ({ push }) => {
   const handleSubmit = values => {
     return axios
       .post(API_URL + "/auth", {

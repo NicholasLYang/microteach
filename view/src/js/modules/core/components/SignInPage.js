@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { push } from "connected-react-router"
 import { SubmissionError } from "redux-form"
 
-const SignInPage = ({ createUserSession }) => {
+const SignInPage = ({ createUserSession, push }) => {
   const handleSubmit = values => {
     return axios
       .post(API_URL + "/auth/sign_in", values)

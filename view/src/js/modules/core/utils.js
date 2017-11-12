@@ -1,3 +1,4 @@
+
 export const delay = duration =>
   new Promise(
     resolve => setTimeout(resolve, duration)
@@ -335,3 +336,5 @@ export const createLib = function (window) {
   return LibGen();
 
 };
+
+

@@ -1,50 +1,54 @@
 import React, { Component } from "react";
-import AceEditor from "react-ace";
 import { API_URL } from "../constants";
-import FlatButton from "material-ui/FlatButton";
 import axios from "axios";
+import uuidv1 from "uuid/v1";
 import { createLib } from "../utils";
+import BlockForm from "./BlockForm";
+import { connect } from "react-redux";
 
 class BlockPage extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      editorState: ""
-    };
+      errors: []
+    }
   }
-
-  handleChange = newValue => {
-    this.setState({ editorState: newValue });
-  };
-
-  handleSubmit = () => {
-    const code = this.state.editorState;
+  handleSubmit = (code, email, username, password) => {
     const data = {
       block: {
+        project_id: 1,
         code
       }
     };
-    axios
-      .post(API_URL + "/blocks", data)
-      .then(response => console.log(response));
     const lib = createLib(window);
-    lib.nicholaslyang.linter({ code }).then(result => console.log(result));
+    lib.nicholaslyang
+      .linter({ code })
+      .then(result => {
+        if (result.length > 0) {
+          console.log(result);
+          this.setState({ errors: result });
+        } else {
+          return lib.nicholaslyang.createFunction({
+            functionName: "Microteach/" + uuidv1(),
+            email,
+            username,
+            password
+          });
+        }
+      })
+      .then(response => console.log(response));
   };
-
   render() {
+    const { errors } = this.state;
+    const { currentBlock } = this.props;
     return (
       <div>
-        <AceEditor
-          mode="javascript"
-          value={this.state.editorState}
-          onChange={this.handleChange}
-          name="CodeEditor"
-          editorProps={{ $blockScrolling: true }}
-        />
-        <FlatButton onClick={this.handleSubmit} label="Submit" />
+        <BlockForm id={currentBlock} errors={errors} handleSubmit={this.handleSubmit} />
       </div>
     );
   }
-}
-
-export default BlockPage;
+};
+const mapStateToProps = state => ({
+  currentBlock: state.core.currentBlock
+});
+export default connect(mapStateToProps)(BlockPage);

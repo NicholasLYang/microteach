@@ -24,7 +24,8 @@ const initialState = {
   viewportWidth: getViewportWidth(),
   viewportHeight: getViewportHeight(),
   userToken: "",
-  currentUser: null
+  currentUser: null,
+  currentBlock: 1
 };
 
 const reducer = (state = { ...initialState }, action) => {
