@@ -1,0 +1,21 @@
+{
+  "name": "fileReader",
+  "version": "0.0.0",
+  "description": "",
+  "author": "nicholaslyang <nick@nicholasyang.com>",
+  "main": "functions/__main__.js",
+  "dependencies": {
+    "fs": "0.0.1-security"
+  },
+  "private": true,
+  "stdlib": {
+    "build": "faaslang",
+    "name": "nicholaslyang/fileReader",
+    "timeout": 10000,
+    "publish": true,
+    "personalize": {
+      "keys": [],
+      "user": []
+    }
+  }
+}
