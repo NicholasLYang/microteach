@@ -1,5 +1,6 @@
 # Microtea.ch
 
+### NOTE: This is the view part of the code. The API is hosted (here)[https://github.com/NicholasLYang/microteach-api]
 
 ## About 
 
@@ -30,4 +31,4 @@ to programming education.
 ## Misc.
 
 Microtea.ch was created at Hack Princeton. It won the stdlib sponsor prize.
-I may revisit it later, as I do actually like the idea a lot. We'll see
+I may revisit it later, as I do actually like the idea a lot. We'll see.
