@@ -2,7 +2,7 @@ import React from "react";
 import injectSheet from "react-jss";
 import FlatButton from "material-ui/FlatButton";
 import { reduxForm, Field } from "redux-form";
-import { renderField } from './renderField'
+import renderField from './renderField'
 
 const styles = {
   inputs: {

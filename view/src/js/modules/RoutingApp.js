@@ -18,11 +18,13 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import NewProjectPage from './core/components/NewProjectPage'
 import SignOutPage from './core/components/SignOutPage'
 import ProjectsPage from './core/components/ProjectsPage'
+import Project from './core/components/Project'
+import { API_URL } from './core/constants'
 
 const client = new ApolloClient({
   // By default, this client will send queries to the
   //  `/graphql` endpoint on the same host
-  link: new HttpLink({ uri: "http://localhost:3000/graphql" }),
+  link: new HttpLink({ uri: API_URL + "/graphql" }),
   cache: new InMemoryCache()
 });
 
@@ -35,12 +37,13 @@ const RoutingApp = () => {
             <MainApp>
               <Switch>
                 <Route exact path="/" component={HomePage} />
-                <Route path="/blocks/new" component={BlockPage} />
+                <Route path="/projects/:projectId/blocks/:blockId" component={BlockPage} />
+                <Route path="/projects/new" component={NewProjectPage} />
+                <Route path="/projects/:projectId" component={Project} />
+                <Route path="/projects" component={ProjectsPage} />
                 <Route path="/signup" component={SignUpPage} />
                 <Route path="/signin" component={SignInPage} />
                 <Route path="/signout" component={SignOutPage} />
-                <Route path="/projects/new" component={NewProjectPage} />
-                <Route path="/projects" component={ProjectsPage} />
               </Switch>
             </MainApp>
           </ConnectedRouter>

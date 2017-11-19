@@ -119,6 +119,7 @@ const createMainJS = (code, BASE_FOLDER, callback) => {
 module.exports = (jsonInput, context, callback) => {
 const input = JSON.parse(jsonInput);
 ${code}
+context(null, out)
 };`;
   fs.writeFile(BASE_FOLDER + "/functions/__main__.js", mainJs, function(err) {
     if (err) {

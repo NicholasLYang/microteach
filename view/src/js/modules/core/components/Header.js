@@ -43,9 +43,6 @@ const Header = ({ classes, currentUser }) =>
             <Link to="/projects">
               <div className={classes.link}> Your Projects!</div>
             </Link>
-            <Link to="/blocks/new">
-              <div className={classes.link}> Make A New Block!</div>
-            </Link>
             <Link to="/projects/new">
               <div className={classes.link}> Make A New Project!</div>
             </Link>

@@ -12,6 +12,10 @@ html, body
     color: red;
 }
 
+.notice {
+    color: green;
+}
+
 #app
 {
     display    : inline;

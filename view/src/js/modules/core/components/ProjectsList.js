@@ -1,16 +1,14 @@
 import React from "react";
 import { gql } from "apollo-client-preset";
 import { graphql } from "react-apollo";
-import Project from "./Project";
+import { Link } from "react-router-dom"
 
 const PROJECTS_QUERY = gql`
   query UserProjectsQuery($id: ID!) {
     user(id: $id) {
       projects {
+        id
         name
-        blocks {
-          id
-        }
       }
     }
   }
@@ -22,11 +20,9 @@ const ProjectsList = ({ data }) => {
       {data.loading
         ? <div> Loading...</div>
         : data.user.projects.map(project =>
-            <Project
-              key={project.id}
-              name={project.name}
-              blocks={project.blocks}
-            />
+            <Link to={"/projects/" + project.id}>
+              <h3> {project.name} </h3>
+            </Link>
           )}
     </div>
   );
