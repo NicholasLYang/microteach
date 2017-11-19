@@ -1,6 +1,6 @@
 # Microtea.ch
 
-### NOTE: This is the frontend portion. The backend is[here](https://github.com/NicholasLYang/microteach-api)
+### NOTE: This is the frontend portion. The backend is [here](https://github.com/NicholasLYang/microteach-api)
 
 ## About 
 
